@@ -129,6 +129,13 @@ public:
         return;
     }
 
+    string toString() {
+        string mapString = "";
+        for(int i = 0; i < cap; i++) {
+            mapString += table[i].toString() + "\n";
+        }
+        return mapString;
+    }
 };
 
 #endif

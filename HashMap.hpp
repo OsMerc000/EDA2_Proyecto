@@ -132,7 +132,9 @@ public:
     string toString() {
         string mapString = "";
         for(int i = 0; i < cap; i++) {
-            mapString += table[i].toString() + "\n";
+            if (table[i].getName() != "") {
+                mapString += table[i].toString() + "\n";
+            }
         }
         return mapString;
     }

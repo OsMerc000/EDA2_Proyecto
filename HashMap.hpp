@@ -44,6 +44,7 @@ private:
         delete[] table;
         table = newMap.table;
         cap = newMap.cap;
+        newMap.table = nullptr;
 
         return;
     }
@@ -108,7 +109,6 @@ public:
         int i = index;
         
         do {
-            i %= cap;
             
             if (table[i].getName() == "") {
                 Rank rank = Rank(name);
@@ -124,7 +124,7 @@ public:
                 return;
             }
 
-            i += 1;
+            i = (i + 1) % cap;
         } while (i != index);
 
         return;

@@ -54,7 +54,6 @@ private:
         int i = index;
         
         do {
-            i %= cap;
             
             if (table[i].getName() == "") {
                 Rank rank = Rank(name, totalNum, totalPrio);
@@ -62,7 +61,7 @@ private:
                 return;
             }
 
-            i += 1;
+            i = (i + 1) % cap;
         } while (i != index);
 
         return;    

@@ -70,6 +70,13 @@ public:
         }
     }
 
+    string toString() {
+        string rankString = "Incident: " + name
+            + "\ttotalNum: " + to_string(totalNum) 
+            + "\ttotalPrio: " + to_string(totalPrio)
+        ;
+        return rankString;
+    }
 };
 
 #endif

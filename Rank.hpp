@@ -24,6 +24,12 @@ public:
         this->totalPrio = 0;
     }
 
+    Rank(string name, int totalNum, int totalPrio) {
+        this->name = name;
+        this->totalNum = totalNum;
+        this->totalPrio = totalPrio;
+    }
+
     ~Rank() {}
 
     string getName() {

@@ -34,9 +34,37 @@ private:
         HashMap newMap = HashMap(newCap);
         for(int i = 0; i < cap; i++) {
             if (table[i].getName() != "") {
-                
+                string name = table[i].getName();
+                int totalPrio = table[i].getTotalPrio();
+                int totalNum = table[i].getTotalNum();
+                newMap.secInsert(name, totalNum, totalPrio);
             }
         }
+
+        delete[] table;
+        table = newMap.table;
+        cap = newMap.cap;
+
+        return;
+    }
+
+    void secInsert(string name, int totalNum, int totalPrio) {
+        int index = hash(name);
+        int i = index;
+        
+        do {
+            i %= cap;
+            
+            if (table[i].getName() == "") {
+                Rank rank = Rank(name, totalNum, totalPrio);
+                table[i] = rank;
+                return;
+            }
+
+            i += 1;
+        } while (i != index);
+
+        return;    
     }
 
 public:
@@ -98,7 +126,7 @@ public:
             i += 1;
         } while (i != index);
 
-        
+        return;
     }
 
 };

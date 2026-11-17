@@ -14,13 +14,13 @@ public:
 
     Rank() {
         this->name = "";
-        this->totalNum = 0;
+        this->totalNum = 1;
         this->totalPrio = 0;
     }
 
     Rank(string name) {
         this->name = name;
-        this->totalNum = 0;
+        this->totalNum = 1;
         this->totalPrio = 0;
     }
 

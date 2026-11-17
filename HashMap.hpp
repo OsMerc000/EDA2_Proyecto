@@ -112,6 +112,7 @@ public:
             
             if (table[i].getName() == "") {
                 Rank rank = Rank(name);
+                rank.incTotalPrio(sev);
                 table[i] = rank;
                 len += 1;
                 return;

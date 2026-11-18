@@ -10,6 +10,36 @@ private:
     int totalNum;
     int totalPrio;
 
+    int compareNamesSimple(string otherName) {
+        if (name < otherName) {
+            return 1;
+        } else if (name > otherName) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+    
+    int compareNamesComplex(string otherName) {
+        int thisCode = stoi(name.substr(4));
+        int otherCode = stoi(otherName.substr(4));
+        if (thisCode < otherCode) {
+            return 1;
+        } else if (thisCode > otherCode) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+    
+    int compareNames(string otherName) {
+        if (name.length() == otherName.length()) {
+            return compareNamesSimple(otherName);
+        } else {
+            return compareNamesComplex(otherName);
+        }
+    }
+
 public:
 
     Incident() {
@@ -66,13 +96,7 @@ public:
         } else if (totalPrio < other.totalPrio) {
             return -1;
         } else {
-            if (name < other.name) {
-                return 1;
-            } else if (name > other.name) {
-                return -1;
-            } else {
-                return 0;
-            }
+            return compareNames(other.getName());
         }
     }
 

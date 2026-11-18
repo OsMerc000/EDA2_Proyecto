@@ -31,14 +31,6 @@ private:
             return 0;
         }
     }
-    
-    int compareNames(string otherName) {
-        if (name.length() == otherName.length()) {
-            return compareNamesSimple(otherName);
-        } else {
-            return compareNamesComplex(otherName);
-        }
-    }
 
 public:
 
@@ -106,6 +98,14 @@ public:
             + "\ttotalPrio: " + to_string(totalPrio)
         ;
         return stringIncident;
+    }
+    
+    int compareNames(string otherName) {
+        if (name.length() == otherName.length()) {
+            return compareNamesSimple(otherName);
+        } else {
+            return compareNamesComplex(otherName);
+        }
     }
 };
 

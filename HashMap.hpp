@@ -1,11 +1,11 @@
 #ifndef HASHMAP_HPP
 #define HASHMAP_HPP
-#include "Rank.hpp"
+#include "Incident.hpp"
 
 class HashMap {
 private:
 
-    Rank* table;
+    Incident* table;
     int cap;
     int len;
 
@@ -54,8 +54,8 @@ private:
         do {
             
             if (table[i].getName() == "") {
-                Rank rank = Rank(name, totalNum, totalPrio);
-                table[i] = rank;
+                Incident incident = Incident(name, totalNum, totalPrio);
+                table[i] = incident;
                 return;
             }
 
@@ -63,11 +63,11 @@ private:
         } while (i != index);
     }
 
-    Rank* getTable() {
+    Incident* getTable() {
         return table;
     }
 
-    void setTable(Rank* table) {
+    void setTable(Incident* table) {
         this->table = table;
     }
 
@@ -76,9 +76,9 @@ public:
     HashMap() {
         this->len = 0;
         this->cap = 5;
-        this->table = new Rank[cap];
+        this->table = new Incident[cap];
         for (int i = 0; i < cap; i++) {
-            table[i] = Rank();
+            table[i] = Incident();
         }
     }
 
@@ -86,9 +86,9 @@ public:
     HashMap(int cap) {
         this->len = 0;
         this->cap = cap;
-        this->table = new Rank[cap];
+        this->table = new Incident[cap];
         for (int i = 0; i < cap; i++) {
-            table[i] = Rank();
+            table[i] = Incident();
         }
     }
 
@@ -113,8 +113,8 @@ public:
                     reFactor();
                     insert(name, sev);
                 } else {
-                    Rank rank = Rank(name, sev);
-                    table[i] = rank;
+                    Incident incident = Incident(name, sev);
+                    table[i] = incident;
                     len += 1;
                 }
                 return;
@@ -133,25 +133,25 @@ public:
     }
 
     string toString() {
-        string mapString = "";
+        string stringMap = "";
         for(int i = 0; i < cap; i++) {
             if (table[i].getName() != "") {
-                mapString += table[i].toString() + "\n";
+                stringMap += table[i].toString() + "\n";
             }
         }
-        return mapString;
+        return stringMap;
     }
 
-    Rank* getRanks() {
-        Rank* ranks = new Rank[len];
+    Incident* getIncidents() {
+        Incident* incidents = new Incident[len];
         int i = 0;
         for(int j = 0; j < cap; j++) {
             if (table[j].getName() != "") {
-                ranks[i] = table[j];
+                incidents[i] = table[j];
                 i += 1;
             }
         }
-        return ranks;
+        return incidents;
     }
 };
 

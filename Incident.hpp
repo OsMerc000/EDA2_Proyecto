@@ -1,9 +1,9 @@
-#ifndef RANK_HPP
-#define RANK_HPP
+#ifndef INCIDENT_HPP
+#define INCIDENT_HPP
 #include <string>
 using namespace std;
 
-class Rank {
+class Incident {
 private:
     
     string name;
@@ -12,31 +12,31 @@ private:
 
 public:
 
-    Rank() {
+    Incident() {
         this->name = "";
         this->totalNum = 0;
         this->totalPrio = 0;
     }
 
-    Rank(string name) {
+    Incident(string name) {
         this->name = name;
         this->totalNum = 1;
         this->totalPrio = 0;
     }
 
-    Rank(string name, int sevInicial) {
+    Incident(string name, int sevInicial) {
         this->name = name;
         this->totalNum = 1;
         this->totalPrio = sevInicial;
     }
 
-    Rank(string name, int totalNum, int totalPrio) {
+    Incident(string name, int totalNum, int totalPrio) {
         this->name = name;
         this->totalNum = totalNum;
         this->totalPrio = totalPrio;
     }
 
-    ~Rank() {}
+    ~Incident() {}
 
     string getName() {
         return name;
@@ -60,7 +60,7 @@ public:
         0  -> this is equal to the other
         -1 -> This is less than the other
     */
-    int comparePrio(Rank other) {
+    int comparePrio(Incident other) {
         if (totalPrio > other.totalPrio) {
             return 1;
         } else if (totalPrio < other.totalPrio) {
@@ -77,11 +77,11 @@ public:
     }
 
     string toString() {
-        string rankString = "Incident: " + name
+        string stringIncident = "Incident: " + name
             + "\ttotalNum: " + to_string(totalNum) 
             + "\ttotalPrio: " + to_string(totalPrio)
         ;
-        return rankString;
+        return stringIncident;
     }
 };
 

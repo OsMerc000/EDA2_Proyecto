@@ -56,9 +56,9 @@ public:
     }
 
     /*
-        1  -> This is greater than the other
-        0  -> this is equal to the other
-        -1 -> This is less than the other
+        1  -> This > Other
+        -1 -> This < Other
+        0  -> This == Other
     */
     int comparePrio(Incident other) {
         if (totalPrio > other.totalPrio) {

@@ -2,8 +2,7 @@
 #define MAXHEAP_HPP
 #include "HashMap.hpp"
 
-struct Rank
-{
+struct Rank {
     int position;
     Incident Incident;
 
@@ -14,17 +13,5 @@ struct Rank
         return stringRank;
     }
 };
-
-
-class MaxHeap {
-private:
-
-
-
-public:
-
-
-};
-
 
 #endif

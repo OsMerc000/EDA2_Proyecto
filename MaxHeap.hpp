@@ -68,6 +68,14 @@ public:
         len += 1;
     }
 
+    string toString() {
+        string stringMaxHeap = "";
+        for (int i = 0; i < len; i++) {
+            stringMaxHeap += tree[i].toString() + "\n";
+        }
+        return stringMaxHeap;
+    }
+
     // Incident pop() {
 
     // }

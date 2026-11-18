@@ -34,10 +34,7 @@ private:
         HashMap newMap = HashMap(newCap);
         for(int i = 0; i < cap; i++) {
             if (table[i].getName() != "") {
-                string name = table[i].getName();
-                int totalPrio = table[i].getTotalPrio();
-                int totalNum = table[i].getTotalNum();
-                newMap.secInsert(name, totalNum, totalPrio);
+                newMap.secInsert(table[i]);
             }
         }
 
@@ -47,13 +44,12 @@ private:
         newMap.setTable(nullptr);
     }
 
-    void secInsert(string name, int totalNum, int totalPrio) {
-        int index = hash(name);
+    void secInsert(Incident incident) {
+        int index = hash(incident.getName());
         int i = index;
         
         do {
             if (table[i].getName() == "") {
-                Incident incident = Incident(name, totalNum, totalPrio);
                 table[i] = incident;
                 return;
             }

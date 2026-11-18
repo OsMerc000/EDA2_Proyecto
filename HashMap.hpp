@@ -52,7 +52,6 @@ private:
         int i = index;
         
         do {
-            
             if (table[i].getName() == "") {
                 Incident incident = Incident(name, totalNum, totalPrio);
                 table[i] = incident;

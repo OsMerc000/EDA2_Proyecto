@@ -10,10 +10,7 @@ private:
     int len;
 
     int hash(string key) {
-        int num = 0;
-        for (int i = 0; i < key.length(); i++) {
-            num += key[i];
-        }
+        int num = stoi(key.substr(4));
         int index = num % cap;
         return index;
     }
@@ -115,7 +112,7 @@ public:
                 return;
             }
 
-            if (table[i].getName() == name) {
+            if (table[i].compareNames(name) == 0) {
                 table[i].incTotalNum();
                 table[i].incTotalPrio(sev);
                 return;

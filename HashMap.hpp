@@ -42,9 +42,9 @@ private:
         }
 
         delete[] table;
-        table = newMap.table;
-        cap = newMap.cap;
-        newMap.table = nullptr;
+        table = newMap.getTable();
+        cap = newMap.getCap();
+        newMap.setTable(nullptr);
 
         return;
     }
@@ -63,8 +63,14 @@ private:
 
             i = (i + 1) % cap;
         } while (i != index);
+    }
 
-        return;    
+    Rank* getTable() {
+        return table;
+    }
+
+    void setTable(Rank* table) {
+        this->table = table;
     }
 
 public:

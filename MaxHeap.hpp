@@ -29,9 +29,7 @@ private:
         int indexFather = getIndexFather(indexSon);
 
         if (tree[indexFather].comparePrio(tree[indexSon]) == -1) {
-            Incident tmp = tree[indexFather];
-            tree[indexFather] = tree[indexSon];
-            tree[indexSon] = tmp;
+            swap(tree[indexFather], tree[indexSon]);
             recInsert(indexFather);
         } else {
             return;
@@ -48,6 +46,29 @@ private:
 
     inline int getIndexRight(int indexFather) {
         return indexFather * 2 + 2;
+    }
+
+    void heapifyDown(int indexFather) {
+        while(true) {
+            int indexSon = indexFather;
+            int indexLeft = getIndexLeft(indexFather);
+            int indexRight = getIndexRight(indexFather);
+
+            if (indexLeft < len && tree[indexSon].comparePrio(tree[indexLeft]) == -1) {
+                indexSon = indexLeft;
+            }
+
+            if (indexRight < len && tree[indexSon].comparePrio(tree[indexRight]) == -1) {
+                indexSon = indexRight;
+            }
+
+            if (indexSon == indexFather) {
+                break;
+            }
+
+            swap(tree[indexFather], tree[indexSon]);
+            indexFather = indexSon;
+        }
     }
 
 public:
@@ -76,9 +97,15 @@ public:
         return stringMaxHeap;
     }
 
-    // Incident pop() {
+    Incident pop() {
+        Incident max = tree[0];
+        
+        tree[0] = tree[len - 1];
+        len -= 1;
 
-    // }
+        heapifyDown(0);
+        return max;
+    }
 
 };
 

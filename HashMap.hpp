@@ -141,6 +141,18 @@ public:
         }
         return mapString;
     }
+
+    Rank* getRanks() {
+        Rank* ranks = new Rank[len];
+        int i = 0;
+        for(int j = 0; j < cap; j++) {
+            if (table[j].getName() != "") {
+                ranks[i] = table[j];
+                i += 1;
+            }
+        }
+        return ranks;
+    }
 };
 
 #endif

@@ -1,14 +1,26 @@
 #ifndef MAXHEAP_HPP
+#ifndef RANK_HPP
+#define RANK_HPP
 #define MAXHEAP_HPP
 #include "HashMap.hpp"
 
 struct Rank {
     int position;
-    Incident Incident;
+    Incident incident;
+
+    Rank() {
+        this->position = 0;
+        this->incident = Incident();
+    }
+
+    Rank(int position, Incident incident) {
+        this->position = position;
+        this->incident = incident;
+    }
 
     string toString() {
         string stringRank = "Position: " + to_string(position)
-            + "\t" + Incident.toString()
+            + "\t" + incident.toString()
         ;
         return stringRank;
     }
@@ -107,6 +119,26 @@ public:
         return max;
     }
 
+    Rank* ranking(int top) {
+        Rank* ranking = new Rank[top];
+        for(int i = 0; i < top; i++) {
+            Rank rank = Rank(i + 1, pop());
+            ranking[i] = rank;
+        }
+        return ranking;
+    }
+
+    Rank* ranking() {
+        return ranking(len);
+    }
+
+    int getLen() {
+        return len;
+    }
+    int getCap() {
+        return cap;
+    }
 };
 
+#endif
 #endif

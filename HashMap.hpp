@@ -45,8 +45,6 @@ private:
         table = newMap.getTable();
         cap = newMap.getCap();
         newMap.setTable(nullptr);
-
-        return;
     }
 
     void secInsert(string name, int totalNum, int totalPrio) {
@@ -106,20 +104,19 @@ public:
     }
 
     void insert(string name, int sev) {
-        if (chargeFactor() >= 0.75) {
-            reFactor();
-        }
-
         int index = hash(name);
         int i = index;
         
         do {
-            
             if (table[i].getName() == "") {
-                Rank rank = Rank(name);
-                rank.incTotalPrio(sev);
-                table[i] = rank;
-                len += 1;
+                if (chargeFactor() >= 0.75) {
+                    reFactor();
+                    insert(name, sev);
+                } else {
+                    Rank rank = Rank(name, sev);
+                    table[i] = rank;
+                    len += 1;
+                }
                 return;
             }
 

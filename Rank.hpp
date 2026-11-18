@@ -14,7 +14,7 @@ public:
 
     Rank() {
         this->name = "";
-        this->totalNum = 1;
+        this->totalNum = 0;
         this->totalPrio = 0;
     }
 
@@ -22,6 +22,12 @@ public:
         this->name = name;
         this->totalNum = 1;
         this->totalPrio = 0;
+    }
+
+    Rank(string name, int sevInicial) {
+        this->name = name;
+        this->totalNum = 1;
+        this->totalPrio = sevInicial;
     }
 
     Rank(string name, int totalNum, int totalPrio) {
